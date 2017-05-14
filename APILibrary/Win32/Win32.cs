@@ -10,9 +10,13 @@ namespace APILibrary.Win32
     public static class Internal
     {
         const string User32 = "user32.dll";
+        const string Gdi32 = "gdi32.dll";
 
         public delegate IntPtr WndProc(IntPtr Hwnd, uint message,
            IntPtr wParam, IntPtr lParam);
+
+        [DllImport(User32)]
+        public static extern int GetSystemMetrics(int nIndex);
 
         [DllImport(User32, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr DefWindowProc(IntPtr Hwnd, uint message,
@@ -67,5 +71,9 @@ namespace APILibrary.Win32
 
         [DllImport(User32)]
         public static extern short GetKeyState(int keyCode);
+
+
+        [DllImport(Gdi32)]
+        public static extern IntPtr GetStockObject(int fnObject);
     }
 }
