@@ -31,7 +31,14 @@ namespace APILibrary.Win32
             IntPtr hlnstance, IntPtr lpParam);
 
         [DllImport(User32)]
+        public static extern bool DestroyWindow(IntPtr hWnd);
+
+        [DllImport(User32)]
         public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [DllImport(User32)]
+        public static extern bool MoveWindow(IntPtr hWnd, int X, int Y,
+            int nWidth, int nHeight, bool bRepaint);
 
         [DllImport(User32)]
         public static extern bool UpdateWindow(IntPtr hWnd);
@@ -53,6 +60,9 @@ namespace APILibrary.Win32
         [DllImport(User32, EntryPoint = "RegisterClass")]
         public static extern ushort RegisterAppinfo(ref AppInfo appinfo);
 
+        [DllImport(User32, EntryPoint = "UnregisterClass", CharSet = CharSet.Auto)]
+        public static extern bool UnRegisterAppinfo(string appinfo_name, IntPtr hInstance);
+
         [DllImport(User32)]
         public static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr IParam);
 
@@ -70,8 +80,13 @@ namespace APILibrary.Win32
         public static extern void PostQuitMessage(int exitCode);
 
         [DllImport(User32)]
+        public static extern bool ReleaseCapture();
+
+        [DllImport(User32)]
         public static extern short GetKeyState(int keyCode);
 
+        [DllImport(User32)]
+        public static extern bool GetCursorPos(ref Point lpPoint);
 
         [DllImport(Gdi32)]
         public static extern IntPtr GetStockObject(int fnObject);

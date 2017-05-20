@@ -46,6 +46,7 @@
     <Compile Include="Win32\AppInfo.cs" />
     <Compile Include="Win32\Enum.cs" />
     <Compile Include="Win32\Message.cs" />
+    <Compile Include="Win32\Point.cs" />
     <Compile Include="Win32\Win32.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
