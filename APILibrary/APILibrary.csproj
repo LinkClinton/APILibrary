@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>APILibrary</RootNamespace>
     <AssemblyName>APILibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -47,6 +47,7 @@
     <Compile Include="Win32\Enum.cs" />
     <Compile Include="Win32\Message.cs" />
     <Compile Include="Win32\Point.cs" />
+    <Compile Include="Win32\Rect.cs" />
     <Compile Include="Win32\Win32.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

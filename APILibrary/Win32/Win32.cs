@@ -11,12 +11,16 @@ namespace APILibrary.Win32
     {
         const string User32 = "user32.dll";
         const string Gdi32 = "gdi32.dll";
+        const string kernel32 = "kernel32.dll";
 
         public delegate IntPtr WndProc(IntPtr Hwnd, uint message,
            IntPtr wParam, IntPtr lParam);
 
         [DllImport(User32)]
         public static extern int GetSystemMetrics(int nIndex);
+
+        [DllImport(kernel32)]
+        public static extern IntPtr GetModuleHandle(string lpModuleName);
 
         [DllImport(User32, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr DefWindowProc(IntPtr Hwnd, uint message,
@@ -87,6 +91,9 @@ namespace APILibrary.Win32
 
         [DllImport(User32)]
         public static extern bool GetCursorPos(ref Point lpPoint);
+
+        [DllImport(User32)]
+        public static extern bool GetClientRect(IntPtr hWnd, ref Rect lpRect);
 
         [DllImport(Gdi32)]
         public static extern IntPtr GetStockObject(int fnObject);
