@@ -29,9 +29,13 @@ namespace APILibrary.Win32
         [DllImport(User32)]
         public static extern IntPtr LoadCursor(IntPtr hlnstance, uint IpCursorName);
 
+        [DllImport(User32, CharSet = CharSet.Auto, EntryPoint = "LoadImageW")]
+        public static extern IntPtr LoadImage(IntPtr hinst, string lpszName, uint uType,
+            int cxDesired, int cyDesired, uint fuLoad);
+
         [DllImport(User32, CharSet = CharSet.Auto, EntryPoint = "CreateWindowExW")]
         public static extern IntPtr CreateWindowEx(uint DdwExStyle, string lpClassName, string lpWindowName,
-            uint dwStyle, int x, int y, int nWidth, int nHeight, IntPtr hWndParent, IntPtr hMenu,
+            uint dwStyle, uint x, uint y, int nWidth, int nHeight, IntPtr hWndParent, IntPtr hMenu,
             IntPtr hlnstance, IntPtr lpParam);
 
         [DllImport(User32)]
@@ -41,11 +45,17 @@ namespace APILibrary.Win32
         public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         [DllImport(User32)]
+        public static extern int ShowCursor(bool bShow);
+
+        [DllImport(User32)]
         public static extern bool MoveWindow(IntPtr hWnd, int X, int Y,
             int nWidth, int nHeight, bool bRepaint);
 
         [DllImport(User32)]
         public static extern bool UpdateWindow(IntPtr hWnd);
+
+        [DllImport(User32, CharSet = CharSet.Auto, EntryPoint = "SetWindowTextW")]
+        public static extern bool SetWindowText(IntPtr hWnd, string lpString);
 
         [DllImport(User32)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X,
@@ -56,6 +66,9 @@ namespace APILibrary.Win32
 
         [DllImport(User32)]
         public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport(User32)]
+        public static extern bool GetWindowRect(IntPtr hWnd, ref Rect lpRect);
 
         [DllImport(User32)]
         public static extern bool SetLayeredWindowAttributes(IntPtr hWnd, uint crKey,
@@ -84,6 +97,12 @@ namespace APILibrary.Win32
         public static extern void PostQuitMessage(int exitCode);
 
         [DllImport(User32)]
+        public static extern IntPtr SetFocus(IntPtr hWnd);
+
+        [DllImport(User32)]
+        public static extern IntPtr SetCapture(IntPtr hWnd);
+
+        [DllImport(User32)]
         public static extern bool ReleaseCapture();
 
         [DllImport(User32)]
@@ -94,6 +113,9 @@ namespace APILibrary.Win32
 
         [DllImport(User32)]
         public static extern bool GetClientRect(IntPtr hWnd, ref Rect lpRect);
+
+        [DllImport(User32)]
+        public static extern bool AdjustWindowRect(ref Rect lpRect, uint dwStyle, bool bMENU);
 
         [DllImport(Gdi32)]
         public static extern IntPtr GetStockObject(int fnObject);
